@@ -24,7 +24,8 @@ class DocsController < ApplicationController
 	end
 	# responds to Delete part
 	def destory
-		
+		@doc.destory
+		redirect_to 'index'
 	end
 	# edit & update both respond to Update part
 	def edit
@@ -32,7 +33,11 @@ class DocsController < ApplicationController
 	end
 	#doesnt have view either
 	def update
-		
+		if @doc.update(doc_params)
+			redirect_to @doc
+		else
+			render 'edit'
+		end
 	end
 
 	private
