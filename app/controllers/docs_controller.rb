@@ -11,11 +11,11 @@ class DocsController < ApplicationController
 	end
 	#new & create responds to Create part
 	def new
-		@doc= Doc.new
+		@doc= current_user.docs.build
 	end
 	#doesnt have a view itself
 	def create
-		@doc= Doc.new(doc_params)
+		@doc= current_user.docs.build(doc_params)
 		if @doc.save
 			redirect_to @doc
 		else
